@@ -1,0 +1,165 @@
+{
+  "paid": false,
+  "description": {
+    "type": "/type/text",
+    "value": "The Lost World is a 1995 techno-thriller novel written by Michael Crichton, and the sequel to his 1990 novel [Jurassic Park](https://openlibrary.org/works/OL46881W). It is his tenth novel under his own name and his twentieth overall, and it was published by Knopf. A paperback edition (ISBN 0-345-40288-X) followed in 1996. In 1997, both novels were re-published as a single book titled Michael Crichton's Jurassic World, which is unrelated to the 2015 film of the same name.\r\n\r\n\r\nContains: \r\n[Lost World [2/2]](https://openlibrary.org/works/OL25311005W)\r\n\r\nAlso contained in:\r\n[Michael Crichton's Jurassic World](https://openlibrary.org/works/OL14950507W)"
+  },
+  "links": [
+    {
+      "url": "http://www.michaelcrichton.com/the-lost-world/",
+      "title": "The Lost World - MichaelCrichton.com",
+      "type": {
+        "key": "/type/link"
+      }
+    },
+    {
+      "title": "The Lost World (Crichton novel) - Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Lost_World_(Crichton_novel)",
+      "type": {
+        "key": "/type/link"
+      }
+    },
+    {
+      "title": "The Lost World (novel) | Jurassic Park wiki | FANDOM powered by Wikia",
+      "url": "https://jurassicpark.fandom.com/wiki/The_Lost_World_(novel)",
+      "type": {
+        "key": "/type/link"
+      }
+    },
+    {
+      "title": "Fiction Book Review: The Lost World by Michael Crichton, Author ...",
+      "url": "https://www.publishersweekly.com/978-0-679-41946-4",
+      "type": {
+        "key": "/type/link"
+      }
+    },
+    {
+      "url": "https://archive.nytimes.com/www.nytimes.com/books/97/04/20/bsp/18524.html",
+      "title": "Leapin' Lizards!",
+      "type": {
+        "key": "/type/link"
+      }
+    },
+    {
+      "title": "New York Times review",
+      "url": "http://www.nytimes.com/1995/10/01/books/leapin-lizards.html",
+      "type": {
+        "key": "/type/link"
+      }
+    }
+  ],
+  "title": "The Lost World",
+  "covers": [
+    10656102,
+    8594876,
+    10487830,
+    10869769,
+    11962825,
+    12287574,
+    12109234
+  ],
+  "subject_places": [
+    "Jurassic Park",
+    "Costa Rica",
+    "Site B",
+    "Isla Sorna",
+    "Isla Nublar",
+    "InGen",
+    "Santa Fe Institute",
+    "Canyon Road"
+  ],
+  "subjects": [
+    "prions",
+    "scrapie",
+    "Ornitholestes",
+    "Mussaurus",
+    "Procompsognathus",
+    "Triceratops",
+    "Dryosaurus",
+    "Hypsilophodon",
+    "Parasaurolophus",
+    "Maiasaura",
+    "Stegosaurus",
+    "Apatosaurus",
+    "Gallimimus",
+    "Pachycephalosaurus",
+    "Tyrannosaurus",
+    "Velociraptors",
+    "geothermal gradient",
+    "Carnotaurus",
+    "paleontologists",
+    "Science fiction",
+    "Fiction",
+    "Dinosaurs",
+    "Cloning",
+    "Thriller",
+    "techno-thriller",
+    "American fiction",
+    "Fiction, thrillers",
+    "Fiction, espionage",
+    "Large type books",
+    "Fiction, science fiction, action & adventure",
+    "Fiction, thrillers, general",
+    "Fiction, technological",
+    "Jurassic park (imaginary place), fiction",
+    "Malcolm, ian (fictitious character), fiction",
+    "Fiction, science fiction, general",
+    "Fiction, media tie-in",
+    "Molecular cloning",
+    "Action & Adventure",
+    "Thrillers",
+    "Readers",
+    "Fiction, suspense",
+    "American Science fiction",
+    "New York Times reviewed",
+    "Dinosaures",
+    "Romans, nouvelles, etc. pour la jeunesse",
+    "Fiction, thrillers, espionage",
+    "Fiction, thrillers, technological",
+    "Children's fiction",
+    "Dinosaurs, fiction"
+  ],
+  "subject_people": [
+    "Ian Malcolm",
+    "Richard Levine",
+    "Diego",
+    "Jack Thorne",
+    "Eddie Carr",
+    "R.B. Benton",
+    "Kelly Curtis",
+    "Sarah Harding",
+    "Lewis Dodgson",
+    "Howard King",
+    "George Baselton"
+  ],
+  "key": "/works/OL46876W",
+  "authors": [
+    "Arthur Conan Doyle"
+  ],
+  "excerpts": [
+    {
+      "comment": "first sentence",
+      "author": {
+        "key": "/people/seabelis"
+      },
+      "excerpt": "The Santa Fe Institute was housed in a series of buildings on Canyon Road which had formerly been a convent, and the Institute's seminars were held in a room which had served as a chapel."
+    }
+  ],
+  "type": {
+    "key": "/type/work"
+  },
+  "subject_times": [
+    "1993",
+    "1995"
+  ],
+  "latest_revision": 59,
+  "edition_count": 59,
+  "created": {
+    "type": "/type/datetime",
+    "value": "2009-10-15T11:48:36.911709"
+  },
+  "last_modified": {
+    "type": "/type/datetime",
+    "value": "2023-09-28T07:46:47.967067"
+  }
+}

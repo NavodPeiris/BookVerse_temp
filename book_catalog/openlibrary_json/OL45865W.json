@@ -1,0 +1,59 @@
+{
+  "paid": false,
+  "description": {
+    "type": "/type/text",
+    "value": "A young English boy describes his relationship with his father and the special adventure they share together."
+  },
+  "covers": [
+    6794243,
+    12337102,
+    12923766
+  ],
+  "key": "/works/OL45865W",
+  "authors": [
+    "Roald Dahl"
+  ],
+  "title": "Danny, The Champion of the World",
+  "subjects": [
+    "Criminals",
+    "Adventure stories",
+    "Juvenile fiction",
+    "Poaching",
+    "Fathers and sons",
+    "Fiction",
+    "Parent and child",
+    "Humorous stories",
+    "Children's stories",
+    "Fathers",
+    "Children's fiction",
+    "Fathers and sons, fiction",
+    "English Young adult fiction",
+    "Children's plays",
+    "Plays",
+    "Children's stories, English",
+    "Father-son relationship",
+    "Boys, fiction",
+    "Children's plays, English",
+    "Korean language materials",
+    "Pères et fils",
+    "Romans, nouvelles, etc. pour la jeunesse",
+    "Spanish language materials",
+    "Padres e hijos",
+    "Novela juvenil",
+    "Ouvrages pour la jeunesse"
+  ],
+  "type": {
+    "key": "/type/work"
+  },
+  "location": "/works/OL45865W",
+  "latest_revision": 33,
+  "edition_count": 33,
+  "created": {
+    "type": "/type/datetime",
+    "value": "2009-10-15T11:34:21.437031"
+  },
+  "last_modified": {
+    "type": "/type/datetime",
+    "value": "2023-09-26T21:29:38.878296"
+  }
+}

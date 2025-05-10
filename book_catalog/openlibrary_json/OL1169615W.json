@@ -1,0 +1,44 @@
+{
+  "paid": true,  
+  "title": "The lost world of Thomas Jefferson",
+    "covers": [
+      139860
+    ],
+    "subject_places": [
+      "United States"
+    ],
+    "subjects": [
+      "American Philosophy",
+      "Intellectual life",
+      "Jefferson, Thomas, 1743-1826",
+      "Philosophy, American",
+      "Philosophie américaine",
+      "Vie intellectuelle",
+      "United states, intellectual life"
+    ],
+    "subject_people": [
+      "Thomas Jefferson (1743-1826)"
+    ],
+    "key": "/works/OL1169615W",
+    "authors": [
+      "Daniel J. Boorstin"
+    ],
+    "subject_times": [
+      "1783-1865",
+      "18th century",
+      "19th century"
+    ],
+    "type": {
+      "key": "/type/work"
+    },
+    "latest_revision": 12,
+    "edition_count": 12,
+    "created": {
+      "type": "/type/datetime",
+      "value": "2009-12-09T20:38:05.416077"
+    },
+    "last_modified": {
+      "type": "/type/datetime",
+      "value": "2024-07-22T05:40:18.389054"
+    }
+}
