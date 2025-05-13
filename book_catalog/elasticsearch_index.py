@@ -14,7 +14,10 @@ mapping = {
     "mappings": {
         "properties": {
             "title": {"type": "text"},
-            "description": {"type": "text"}
+            "description": {"type": "text"},
+            "authors": {"type": "text"},
+            "subjects": {"type": "text"},
+            "paid": {"type": "boolean"}
         }
     }
 }

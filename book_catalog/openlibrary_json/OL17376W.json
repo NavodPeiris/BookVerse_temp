@@ -29,10 +29,7 @@
     "Science fiction films",
     "2001: a space odyssey (Motion picture)"
   ],
-  "description": {
-    "type": "/type/text",
-    "value": "Includes chapters on the making of the film '2001'."
-  },
+  "description": "Includes chapters on the making of the film '2001'.",
   "latest_revision": 14,
   "edition_count": 14,
   "created": {

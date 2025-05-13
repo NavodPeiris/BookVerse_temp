@@ -1,9 +1,6 @@
 {
   "paid": false,
-  "description": {
-    "type": "/type/text",
-    "value": "A young English boy describes his relationship with his father and the special adventure they share together."
-  },
+  "description": "A young English boy describes his relationship with his father and the special adventure they share together.",
   "covers": [
     6794243,
     12337102,

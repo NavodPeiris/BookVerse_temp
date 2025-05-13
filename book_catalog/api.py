@@ -9,6 +9,8 @@ from sqlalchemy.orm import declarative_base
 from sqlalchemy import Column, Integer, String, select, func
 from utils import get_db, get_current_user_id, User, Likes, Reviews, Purchases, SECRET_KEY, ALGORITHM
 from fastapi.responses import StreamingResponse
+from pydantic import BaseModel
+from typing import Optional
 
 es = Elasticsearch("http://localhost:9200")
 
@@ -30,6 +32,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+class SearchRequest(BaseModel):
+    title: Optional[str] = None
+    description: Optional[str] = None
+    authors: Optional[str] = None
+    subjects: Optional[str] = None
+    paid: Optional[bool] = None
+    free: Optional[bool] = None
 
 def normalize_document(doc):
     if isinstance(doc.get("description"), dict):
@@ -58,6 +67,108 @@ def search(text: str):
             }
         }
     }
+
+    res = []
+
+    results = es.search(index=index_name, body=query)
+    for hit in results["hits"]["hits"]:
+        doc = hit["_source"]
+        norm_doc = normalize_document(doc)
+        formatted_doc = {
+            "key": norm_doc.get("key"),
+            "author_name": norm_doc.get("authors"),
+            "cover_i": norm_doc.get("covers")[0],
+            "edition_count": norm_doc.get("edition_count"),
+            "first_publish_year": norm_doc.get("first_publish_year"),
+            "title": norm_doc.get("title"),
+        }
+        res.append(formatted_doc)
+
+    return JSONResponse(content=res)
+
+
+@app.post("/searchNew")
+def searchAll(request: SearchRequest):
+
+    if all(value is None for value in request.model_dump().values()):
+        return JSONResponse(content=[])
+    
+    index_name = "bookverse_books"
+
+    query = {
+        "query": {
+            "bool": {
+                "must": []
+            }
+        }
+    }
+
+    # Only include non-empty fields
+    if request.title is not None:
+        query["query"]["bool"]["must"].append({
+            "match": {
+                "title": {
+                    "query": request.title,
+                    "operator": "and",  # ensure partial and full text match
+                    "fuzziness": "AUTO"  # Allows minor typos and variations
+                }
+            }
+        })
+    
+    if request.description is not None:
+        query["query"]["bool"]["must"].append({
+            "match": {
+                "description": {
+                    "query": request.description,
+                    "operator": "and",  # ensure partial and full text match
+                    "fuzziness": "AUTO"  # Allows minor typos and variations
+                }
+            }
+        })
+
+    if request.authors is not None:
+        authors = [a.strip() for a in request.authors.split(",") if a.strip()]
+        for author in authors:
+            query["query"]["bool"]["must"].append({
+                "match": {
+                    "authors": {
+                        "query": author,
+                        "operator": "and",  # ensure partial and full text match
+                        "fuzziness": "AUTO"  # Allows minor typos and variations
+                    }
+                }
+            })
+
+    if request.subjects is not None:
+        subjects = [s.strip() for s in request.subjects.split(",") if s.strip()]
+        for subject in subjects:
+            query["query"]["bool"]["must"].append({
+                "match": {
+                    "subjects": {
+                        "query": subject,
+                        "operator": "and",  # ensure partial and full text match
+                        "fuzziness": "AUTO"  # Allows minor typos and variations
+                    }
+                }
+            })
+
+    
+    if request.paid is not None and request.free is not None:
+        if request.paid and request.free: # both true
+            print("no specification")
+        elif request.paid:
+            query["query"]["bool"]["must"].append({"match": {"paid": request.paid}})
+        elif request.free:
+            query["query"]["bool"]["must"].append({"match": {"paid": not request.free}})
+        else:   # both false
+            print("no specification")
+        
+    elif request.paid is None and request.free is None:
+        print("no specification")
+    elif request.paid is not None:
+        query["query"]["bool"]["must"].append({"match": {"paid": request.paid}})
+    elif request.free is not None:
+        query["query"]["bool"]["must"].append({"match": {"paid": not request.free}})
 
     res = []
 

@@ -1,9 +1,6 @@
 {
   "paid": false,
-  "description": {
-    "type": "/type/text",
-    "value": "The Lost World is a 1995 techno-thriller novel written by Michael Crichton, and the sequel to his 1990 novel [Jurassic Park](https://openlibrary.org/works/OL46881W). It is his tenth novel under his own name and his twentieth overall, and it was published by Knopf. A paperback edition (ISBN 0-345-40288-X) followed in 1996. In 1997, both novels were re-published as a single book titled Michael Crichton's Jurassic World, which is unrelated to the 2015 film of the same name.\r\n\r\n\r\nContains: \r\n[Lost World [2/2]](https://openlibrary.org/works/OL25311005W)\r\n\r\nAlso contained in:\r\n[Michael Crichton's Jurassic World](https://openlibrary.org/works/OL14950507W)"
-  },
+  "description": "The Lost World is a 1995 techno-thriller novel written by Michael Crichton, and the sequel to his 1990 novel [Jurassic Park](https://openlibrary.org/works/OL46881W). It is his tenth novel under his own name and his twentieth overall, and it was published by Knopf. A paperback edition (ISBN 0-345-40288-X) followed in 1996. In 1997, both novels were re-published as a single book titled Michael Crichton's Jurassic World, which is unrelated to the 2015 film of the same name.\r\n\r\n\r\nContains: \r\n[Lost World [2/2]](https://openlibrary.org/works/OL25311005W)\r\n\r\nAlso contained in:\r\n[Michael Crichton's Jurassic World](https://openlibrary.org/works/OL14950507W)",
   "links": [
     {
       "url": "http://www.michaelcrichton.com/the-lost-world/",
