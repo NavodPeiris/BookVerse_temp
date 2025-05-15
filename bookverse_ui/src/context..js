@@ -31,7 +31,7 @@ const AppProvider = ({children}) => {
         
         try{
             const token = localStorage.getItem('access_token');
-            const response = await axios.post(`${book_catalog_link}/searchNew`,
+            const response = await axios.post(`${book_catalog_link}/search`,
             body,
             {
                 headers: {

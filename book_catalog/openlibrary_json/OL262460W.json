@@ -2,65 +2,17 @@
   "paid": true,
   "description": "Journalist Ed Malone is looking for an adventure, and that's exactly what he finds when he meets the eccentric Professor Challenger - an adventure that leads Malone and his three companions deep into the Amazon jungle, to a lost world where dinosaurs roam free.",
   "title": "The Lost World",
-  "covers": [
-    8231444,
-    9778076,
-    10210515,
-    10239827,
-    10310420,
-    8785066,
-    10324640,
-    10357570,
-    10510591,
-    13124179,
-    10668484,
-    11988662,
-    12069407,
-    12498475,
-    12622182,
-    12125789,
-    10909006,
-    11438210,
-    11474857,
-    10783116,
-    11762212,
-    11226266,
-    12505197,
-    10668485,
-    11161670,
-    11554294,
-    11715676,
-    12284357,
-    13124180,
-    10522253,
-    12098166,
-    10605851,
-    12373291,
-    3096708,
-    13708475,
-    11585895,
-    12334454,
-    13112630,
-    13499794
-  ],
+  "cover_image_available": true,
   "subject_places": [
     "South America",
     "England",
     "London"
   ],
   "first_publish_year": "December 1, 2005",
-  "subject_people": [
-    "Arthur Conan Doyle Sir (1859-1930)",
-    "Charles Darwin (1809-1882)",
-    "Arthur Conan Doyle (1859-1930)"
-  ],
-  "key": "/works/OL262460W",
+  "key": "OL262460W",
   "authors": [
     "Arthur Conan Doyle"
   ],
-  "type": {
-    "key": "/type/work"
-  },
   "subjects": [
     "Adventure stories",
     "Atlantis",
@@ -119,23 +71,9 @@
     "English Fantasy fiction",
     "Long now manual for civilization"
   ],
-  "links": [
-    {
-      "title": "New York Times review",
-      "url": "http://www.nytimes.com/1984/12/02/books/prince-myshkin-gigi-and-dr-johnson.html",
-      "type": {
-        "key": "/type/link"
-      }
-    }
-  ],
   "latest_revision": 90,
   "edition_count": 90,
-  "created": {
-    "type": "/type/datetime",
-    "value": "2009-10-24T07:26:31.097043"
-  },
-  "last_modified": {
-    "type": "/type/datetime",
-    "value": "2025-04-06T14:46:45.143948"
-  }
+  "created": "2009-10-24T07:26:31.097043",
+  "last_modified": "2025-04-06T14:46:45.143948",
+  "price": 0
 }

@@ -1,67 +1,18 @@
 {
   "paid": false,
   "title": "Brave New World",
-  "key": "/works/OL64365W",
+  "key": "OL64365W",
   "authors": [
     "Aldous Huxley"
   ],
-  "type": {
-    "key": "/type/work"
-  },
   "description": "Originally published in 1932, this outstanding work of literature is more crucial and relevant today than ever before. Cloning, feel-good drugs, antiaging programs, and total social control through politics, programming, and media -- has Aldous Huxley accurately predicted our future? With a storyteller's genius, he weaves these ethical controversies in a compelling narrative that dawns in the year 632 AF (After Ford, the deity). When Lenina and Bernard visit a savage reservation, we experience how Utopia can destroy humanity. A powerful work of speculative fiction that has enthralled and terrified readers for generations, Brave New World is both a warning to be heeded and thought-provoking yet satisfying entertainment. - Container.",
-  "covers": [
-    8231823,
-    7877366,
-    36629,
-    4735296,
-    76273,
-    38160,
-    38161,
-    28007,
-    -1,
-    75319,
-    6300729,
-    380854,
-    7730373,
-    7944082,
-    8458270,
-    8741857,
-    8756770,
-    8761508,
-    10141683,
-    10434737,
-    10179684,
-    10427017,
-    10284209,
-    4917603,
-    980448,
-    6809781,
-    6859627,
-    6896729,
-    10667240,
-    10993168,
-    11540816,
-    14132626,
-    12349851,
-    10883516,
-    12992919,
-    13521220,
-    13524752,
-    6624877,
-    11676540,
-    12948824,
-    12999171,
-    14847148
-  ],
+  "cover_image_available": true,
   "subject_places": [
     "Central London Hatchery",
     "London",
     "United Kingdom"
   ],
   "first_publish_year": "April 1, 2004",
-  "subject_people": [
-    "Bernard Marx"
-  ],
   "subject_times": [
     "Ethical Aspects",
     "Sci-Fi",
@@ -147,30 +98,9 @@
     "Totalitarisme",
     "Collectivisme"
   ],
-  "links": [
-    {
-      "title": "New York Times review",
-      "url": "http://www.nytimes.com/1985/11/21/books/books-of-the-times-169933.html",
-      "type": {
-        "key": "/type/link"
-      }
-    },
-    {
-      "title": "Review of Aldous Huxley’s “Brave New World”",
-      "url": "https://love-books-review.com/blog/brave-new-world/",
-      "type": {
-        "key": "/type/link"
-      }
-    }
-  ],
   "latest_revision": 16,
   "edition_count": 16,
-  "created": {
-    "type": "/type/datetime",
-    "value": "2009-10-16T01:40:19.197854"
-  },
-  "last_modified": {
-    "type": "/type/datetime",
-    "value": "2025-04-26T08:11:29.054317"
-  }
+  "created": "2009-10-16T01:40:19.197854",
+  "last_modified": "2025-04-26T08:11:29.054317",
+  "price": 0
 }

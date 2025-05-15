@@ -18,65 +18,12 @@
     "Political science",
     "Bolshevism"
   ],
-  "key": "/works/OL827976W",
+  "key": "OL827976W",
   "title": "Ten Days That Shook the World",
   "authors": [
     "John Reed"
   ],
-  "type": {
-    "key": "/type/work"
-  },
-  "covers": [
-    12727155,
-    4386101,
-    2754402,
-    9105600,
-    4910567,
-    314780,
-    1118687,
-    97255,
-    9303689,
-    10200931,
-    4674531,
-    10691005
-  ],
-  "links": [
-    {
-      "url": "https://en.wikipedia.org/wiki/Ten_Days_That_Shook_the_World",
-      "title": "Wikipedia",
-      "type": {
-        "key": "/type/link"
-      }
-    },
-    {
-      "url": "https://www.wikidata.org/wiki/Q30925",
-      "title": "Wikidata",
-      "type": {
-        "key": "/type/link"
-      }
-    },
-    {
-      "url": "https://viaf.org/viaf/219395667",
-      "title": "VIAF ID: 219395667",
-      "type": {
-        "key": "/type/link"
-      }
-    },
-    {
-      "url": "https://inventaire.io/entity/wd:Q30925",
-      "title": "inventaire.io",
-      "type": {
-        "key": "/type/link"
-      }
-    },
-    {
-      "title": "BookBrainz",
-      "url": "https://bookbrainz.org/work/876b3002-bf2d-426f-977f-20a9f73d4944",
-      "type": {
-        "key": "/type/link"
-      }
-    }
-  ],
+  "cover_image_available": true,
   "description": "**Ten Days That Shook the World** (1919) is a book by the American journalist and socialist John Reed. Here, Reed presented a firsthand account of the 1917 Russian October Revolution. Reed followed many of the most prominent Bolsheviks closely during his time in Russia.\r\n\r\n(Source: [Wikipedia](https://en.wikipedia.org/wiki/Ten_Days_That_Shook_the_World))",
   "subject_places": [
     "Soviet Union",
@@ -87,17 +34,9 @@
     "Revolution, 1917-1921",
     "Revolution, 1917-"
   ],
-  "subject_people": [
-    "John Reed (1887-1920)"
-  ],
   "latest_revision": 13,
   "edition_count": 13,
-  "created": {
-    "type": "/type/datetime",
-    "value": "2009-12-09T05:05:55.419103"
-  },
-  "last_modified": {
-    "type": "/type/datetime",
-    "value": "2023-07-07T10:45:18.942826"
-  }
+  "created": "2009-12-09T05:05:55.419103",
+  "last_modified": "2023-07-07T10:45:18.942826",
+  "price": 19.99
 }

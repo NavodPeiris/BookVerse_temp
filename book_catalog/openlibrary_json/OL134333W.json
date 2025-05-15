@@ -1,75 +1,17 @@
 {
   "paid": false,
   "description": "Never before in history have there been combined in one man the character, the political leadership, the military perception and the eloquence which our generation has known in Winston Churchill. It is no wonder that when it was announced that he would write the history of the Second World War, there arose throughout the world an interest and excitement caused by no other publication of this century. The six volumes of The Second World War fulfilled the highest expectations with which they were awaited. But the great length of the work and its necessary cost has prevented many thousands from reading and owning this great history. Now the heart of the work appears in one volume. The abbreviation has been made with the utmost skill, resulting in a unified, dramatic story of the world's greatest ordeal. Perhaps the glory of Sir Winston's prose is even heigtened by the omission of details necessary for the record but of less interest to the general reader. Memoirs of the Second World War will be read and treasured by a vast number of people who do not yet know this drama written imperishably by one of its greatest actors. - Jacket flap.",
-  "links": [
-    {
-      "title": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/The_Second_World_War_(book_series)",
-      "type": {
-        "key": "/type/link"
-      }
-    },
-    {
-      "title": "Wikidata",
-      "url": "https://www.wikidata.org/wiki/Q209788",
-      "type": {
-        "key": "/type/link"
-      }
-    },
-    {
-      "title": "VIAF ID: 214777902",
-      "url": "https://viaf.org/viaf/214777902",
-      "type": {
-        "key": "/type/link"
-      }
-    },
-    {
-      "title": "BookBrainz",
-      "url": "https://bookbrainz.org/work/a2169726-a35d-41f6-963c-ae04d994ef3b",
-      "type": {
-        "key": "/type/link"
-      }
-    },
-    {
-      "title": "inventaire.io",
-      "url": "https://inventaire.io/entity/wd:Q209788",
-      "type": {
-        "key": "/type/link"
-      }
-    }
-  ],
   "title": "Memoirs of The Second World War",
-  "covers": [
-    7347623,
-    4033003,
-    2357147,
-    12154781,
-    2560324,
-    881953,
-    12149673,
-    255751,
-    10450279,
-    11797744
-  ],
+  "cover_image_available": true,
   "subject_places": [
     "Great Britain",
     "Europe"
   ],
   "first_publish_year": "1948",
-  "subject_people": [
-    "Winston Churchill Sir (1874-1965)",
-    "Winston Churchill (1874-1965)"
-  ],
-  "key": "/works/OL134333W",
+  "key": "OL134333W",
   "authors": [
     "Winston S. Churchill"
   ],
-  "dewey_number": [
-    "940.53"
-  ],
-  "type": {
-    "key": "/type/work"
-  },
   "subjects": [
     "Personal narratives, British",
     "British Personal narratives",
@@ -90,20 +32,12 @@
     "War",
     "World War (1939-1945) fast (OCoLC)fst01180924"
   ],
-  "lc_classifications": [
-    "D'743'C472'1959"
-  ],
   "subject_times": [
     "1918-1945"
   ],
   "latest_revision": 23,
   "edition_count": 23,
-  "created": {
-    "type": "/type/datetime",
-    "value": "2009-10-19T14:05:11.183754"
-  },
-  "last_modified": {
-    "type": "/type/datetime",
-    "value": "2024-08-30T12:54:57.364364"
-  }
+  "created": "2009-10-19T14:05:11.183754",
+  "last_modified": "2024-08-30T12:54:57.364364",
+  "price": 0
 }

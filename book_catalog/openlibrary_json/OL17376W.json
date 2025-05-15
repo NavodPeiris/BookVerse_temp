@@ -2,24 +2,11 @@
   "paid": false,
   "first_publish_year": "1972",
   "title": "The Lost Worlds of 2001",
-  "covers": [
-    6955511,
-    4475718,
-    8742346
-  ],
-  "lc_classifications": [
-    "PN1997.T86 C5 1979"
-  ],
-  "key": "/works/OL17376W",
+  "cover_image_available": true,
+  "key": "OL17376W",
   "authors": [
     "Arthur C. Clarke"
   ],
-  "dewey_number": [
-    "823/.9/14"
-  ],
-  "type": {
-    "key": "/type/work"
-  },
   "subjects": [
     "2001 : a space odyssey. [Motion picture]",
     "2001, a space odyssey (Motion picture)",
@@ -32,12 +19,7 @@
   "description": "Includes chapters on the making of the film '2001'.",
   "latest_revision": 14,
   "edition_count": 14,
-  "created": {
-    "type": "/type/datetime",
-    "value": "2009-10-08T18:30:11.514899"
-  },
-  "last_modified": {
-    "type": "/type/datetime",
-    "value": "2024-08-17T04:19:13.896458"
-  }
+  "created": "2009-10-08T18:30:11.514899",
+  "last_modified": "2024-08-17T04:19:13.896458",
+  "price": 0
 }

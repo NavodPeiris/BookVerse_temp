@@ -16,6 +16,7 @@ const Home = () => {
       localStorage.removeItem('access_token');
       localStorage.removeItem('expire');
       console.log('Token expired and removed.');
+      navigate("/login");
     }
 
     if (token && tokenExpiration) {

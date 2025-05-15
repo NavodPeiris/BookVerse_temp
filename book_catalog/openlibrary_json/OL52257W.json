@@ -1,23 +1,8 @@
 {
   "paid": false,
   "subtitle": "a story of mankind",
-  "covers": [
-    8246099,
-    8914109,
-    9176647,
-    9201408,
-    10537613,
-    12019139,
-    9182221,
-    10424917,
-    11528050,
-    12043453,
-    7877853,
-    9213600,
-    8535823,
-    12541636
-  ],
-  "key": "/works/OL52257W",
+  "cover_image_available": true,
+  "key": "OL52257W",
   "authors": [
     "Henrik Willem van Loon"
   ],
@@ -31,36 +16,10 @@
     "Fiction, science fiction, general",
     "Long now manual for civilization"
   ],
-  "type": {
-    "key": "/type/work"
-  },
   "description": "https://archive.org/details/ElMundoSeLibertaH.G.Wells",
-  "links": [
-    {
-      "title": "Archive.org",
-      "url": "https://archive.org/details/ElMundoSeLibertaH.G.Wells",
-      "type": {
-        "key": "/type/link"
-      }
-    }
-  ],
-  "excerpts": [
-    {
-      "pages": "1-228",
-      "excerpt": "https://archive.org/details/ElMundoSeLibertaH.G.Wells",
-      "author": {
-        "key": "/people/ElCreus"
-      }
-    }
-  ],
   "latest_revision": 34,
   "edition_count": 34,
-  "created": {
-    "type": "/type/datetime",
-    "value": "2009-10-15T16:30:47.596577"
-  },
-  "last_modified": {
-    "type": "/type/datetime",
-    "value": "2025-03-24T19:40:15.863371"
-  }
+  "created": "2009-10-15T16:30:47.596577",
+  "last_modified": "2025-03-24T19:40:15.863371",
+  "price": 0
 }

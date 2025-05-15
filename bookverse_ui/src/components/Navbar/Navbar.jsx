@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "./Navbar.css";
 import logoImg from "../../images/logo.png";
 import {HiOutlineMenuAlt3} from "react-icons/hi";
@@ -7,6 +7,14 @@ import {HiOutlineMenuAlt3} from "react-icons/hi";
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const handleNavbar = () => setToggleMenu(!toggleMenu);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('expire');
+    console.log('Token removed.');
+    navigate("/login");
+  }
 
   return (
     <nav className='navbar' id = "navbar">
@@ -31,6 +39,14 @@ const Navbar = () => {
             <li className='nav-item'>
               <Link to = "about" className='nav-link text-uppercase text-black fs-22 fw-6 ls-1'>about</Link>
             </li>
+            <button
+              type="submit"
+              className="nav-link text-uppercase text-black fs-18 fw-6 ls-1 ms-3 mt-1"
+              onClick={handleLogout}
+              
+            >
+              <h2>Logout</h2>
+            </button>
           </ul>
         </div>
       </div>

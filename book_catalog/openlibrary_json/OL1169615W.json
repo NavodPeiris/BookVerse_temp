@@ -1,45 +1,32 @@
 {
   "paid": true,  
   "title": "The lost world of Thomas Jefferson",
-    "covers": [
-      139860
-    ],
-    "subject_places": [
-      "United States"
-    ],
-    "description": "In this classic work by one of America's most distinguished historians, Daniel Boorstin enters into Thomas Jefferson's world of ideas. By analysing writings of 'the Jeffersonian Circle,' Boorstin explores concepts of God, nature, equality, toleration, education and government in order to illuminate their underlying world view. The Lost World of Thomas Jefferson demonstrates why on the 250th anniversary of his birth, this American leader's message has remained relevant to our national crises and grand concerns",
-    "subjects": [
-      "American Philosophy",
-      "Intellectual life",
-      "Jefferson, Thomas, 1743-1826",
-      "Philosophy, American",
-      "Philosophie américaine",
-      "Vie intellectuelle",
-      "United states, intellectual life"
-    ],
-    "subject_people": [
-      "Thomas Jefferson (1743-1826)"
-    ],
-    "key": "/works/OL1169615W",
-    "authors": [
-      "Daniel J. Boorstin"
-    ],
-    "subject_times": [
-      "1783-1865",
-      "18th century",
-      "19th century"
-    ],
-    "type": {
-      "key": "/type/work"
-    },
-    "latest_revision": 12,
-    "edition_count": 12,
-    "created": {
-      "type": "/type/datetime",
-      "value": "2009-12-09T20:38:05.416077"
-    },
-    "last_modified": {
-      "type": "/type/datetime",
-      "value": "2024-07-22T05:40:18.389054"
-    }
+  "cover_image_available": true,
+  "subject_places": [
+    "United States"
+  ],
+  "description": "In this classic work by one of America's most distinguished historians, Daniel Boorstin enters into Thomas Jefferson's world of ideas. By analysing writings of 'the Jeffersonian Circle,' Boorstin explores concepts of God, nature, equality, toleration, education and government in order to illuminate their underlying world view. The Lost World of Thomas Jefferson demonstrates why on the 250th anniversary of his birth, this American leader's message has remained relevant to our national crises and grand concerns",
+  "subjects": [
+    "American Philosophy",
+    "Intellectual life",
+    "Jefferson, Thomas, 1743-1826",
+    "Philosophy, American",
+    "Philosophie américaine",
+    "Vie intellectuelle",
+    "United states, intellectual life"
+  ],
+  "key": "OL1169615W",
+  "authors": [
+    "Daniel J. Boorstin"
+  ],
+  "subject_times": [
+    "1783-1865",
+    "18th century",
+    "19th century"
+  ],
+  "latest_revision": 12,
+  "edition_count": 12,
+  "created": "2009-12-09T20:38:05.416077",
+  "last_modified": "2024-07-22T05:40:18.389054",
+  "price": 15.99
 }

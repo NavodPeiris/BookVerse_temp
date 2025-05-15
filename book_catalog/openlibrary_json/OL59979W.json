@@ -2,22 +2,7 @@
   "paid": false,
   "description": "Joshua Slocum, one of the most famous of American sea captains, really was the first to single-handedly circumnavigate the world. The epitome of Yankee independence, he had risen from a seaman to the captain of his own ship. Marooned in Brazil, he built a \"canoe\" in which he returned to America (see The Voyage of the Liberdade). At loose ends at fifty-one, he was offered an old oyster boat which he rebuilt into the 37' Spray and in 1895 he took off from Boston for the Straits of Gibraltar. He is a captivating writer as well; observant, humorous, and evocative: \"For, one day, well off the Patagonian coast, while the sloop was reaching under short sail, a tremendous wave, the culmination, it seemed, of many waves, rolled down upon her in a storm, roaring as it came. I had only a moment to get all sail down and myself up on the peak halliards, out of danger, when I saw the mighty crest towering masthead-high above me. The mountain of water submerged my vessel. She shook in every timber and reeled under the weight of the sea, but rose quickly out of it, and rode grandly over the rollers that followed. It may have been a minute that from my hold in the rigging I could see no part of the Spray's hull. Perhaps it was even less time than that, but it seemed a long while, for under great excitement one lives fast, and in a few seconds one may think a great deal of one's past life.\"He met determined pirates in Tierra del Fuego:\"I was not for letting on that I was alone, and so I stepped into the cabin, and, passing through the hold, came out at the fore-scuttle, changing my clothes as I went along. That made two men. Then the piece of bowsprit which I had sawed off at Buenos Aires, and which I had still on board, I arranged forward on the lookout, dressed as a seaman, attaching a line by which I could pull it into motion. That made three of us...\"In Africa he met the explorer Henry Stanley:\"Mr. Stanley was a nautical man once himself, - on the Nyanza, I think, - and of course my desire was to appear in the best light before a man of his experience. He looked me over carefully, and said, \"'What an example of patience!'\"'Patience is all that is required,' I ventured to reply.\"He then asked if my vessel had water-tight compartments. I explained that she was all water-tight and all compartment. \"'What if she should strike a rock?' he asked. \"'Compartments would not save her if she should hit the rocks lying along her course,' said I; adding, 'she must be kept away from the rocks.' \"After a considerable pause Mr. Stanley asked, 'What if a swordfish should pierce her hull with its sword?' \"Of course I had thought of that as one of the dangers of the sea, and also of the chance of being struck by lightning. In the case of the swordfish, I ventured to say that 'the first thing would be to secure the sword.'\"So this is where Jack London got the idea for watertight compartments! (see Cruise of the Snark, available from The Narrative Press) Discover for yourself why everyone reads this book (called a sailor's Walden) -- even if you're not planning a solo sailing trip. And take it with you if you are!",
   "title": "Sailing alone around the world",
-  "covers": [
-    8247067,
-    1990914,
-    7162998,
-    6825209,
-    7743951,
-    8021752,
-    930306,
-    8866597,
-    10181658,
-    557449,
-    10895766,
-    11246870,
-    11532546,
-    14440656
-  ],
+  "cover_image_available": true,
   "subjects": [
     "Spray (Sloop)",
     "Single-handed sailing",
@@ -50,21 +35,13 @@
     "Joshua Slocum (1844-1909)",
     "Joshua Slocum (1844-)"
   ],
-  "key": "/works/OL59979W",
+  "key": "OL59979W",
   "authors": [
     "Joshua Slocum"
   ],
-  "type": {
-    "key": "/type/work"
-  },
   "latest_revision": 22,
   "edition_count": 22,
-  "created": {
-    "type": "/type/datetime",
-    "value": "2009-10-16T00:22:57.847081"
-  },
-  "last_modified": {
-    "type": "/type/datetime",
-    "value": "2024-09-25T18:41:40.861023"
-  }
+  "created": "2009-10-16T00:22:57.847081",
+  "last_modified": "2024-09-25T18:41:40.861023",
+  "price": 0
 }

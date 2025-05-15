@@ -2,21 +2,7 @@
   "paid": false,
   "description": "Long ago there was a little land, over which ruled a regulus or kinglet, who was called King Peter, though his kingdom was but little. He had four sons whose names were Blaise, Hugh, Gregory and Ralph: of these Ralph was the youngest, whereas he was but of twenty winters and one; and Blaise was the oldest and had seen thirty winters.",
   "title": "The Well at the World's End",
-  "covers": [
-    2404583,
-    494122,
-    2494374,
-    854253,
-    5630765,
-    8296109,
-    10191848,
-    11253434,
-    12595097,
-    854254,
-    8774560,
-    10331108,
-    10533324
-  ],
+  "cover_image_available": true,
   "subjects": [
     "Quests (Expeditions)",
     "Fiction",
@@ -29,31 +15,14 @@
     "English literature",
     "Fiction, fantasy, epic"
   ],
-  "key": "/works/OL47750W",
+  "key": "OL47750W",
   "authors": [
     "William Morris"
   ],
-  "type": {
-    "key": "/type/work"
-  },
   "first_publish_year": "January 17, 2007",
-  "first_sentence": {
-    "type": "/type/text",
-    "value": "Long ago there was a little land, over which ruled a regulus or kinglet, who was called King Peter, though his kingdom was but little."
-  },
-  "excerpts": [
-    {
-      "excerpt": "Long ago there was a little land, over which ruled a regulus or kinglet, who was called King Peter, though his kingdom was but little."
-    }
-  ],
   "latest_revision": 17,
   "edition_count": 17,
-  "created": {
-    "type": "/type/datetime",
-    "value": "2009-10-15T11:48:36.911709"
-  },
-  "last_modified": {
-    "type": "/type/datetime",
-    "value": "2023-04-30T11:37:35.690315"
-  }
+  "created": "2009-10-15T11:48:36.911709",
+  "last_modified": "2023-04-30T11:37:35.690315",
+  "price": 0
 }

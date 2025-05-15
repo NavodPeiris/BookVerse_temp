@@ -1,12 +1,8 @@
 {
   "paid": false,
   "description": "A young English boy describes his relationship with his father and the special adventure they share together.",
-  "covers": [
-    6794243,
-    12337102,
-    12923766
-  ],
-  "key": "/works/OL45865W",
+  "cover_image_available": true,
+  "key": "OL45865W",
   "authors": [
     "Roald Dahl"
   ],
@@ -39,18 +35,9 @@
     "Novela juvenil",
     "Ouvrages pour la jeunesse"
   ],
-  "type": {
-    "key": "/type/work"
-  },
-  "location": "/works/OL45865W",
   "latest_revision": 33,
   "edition_count": 33,
-  "created": {
-    "type": "/type/datetime",
-    "value": "2009-10-15T11:34:21.437031"
-  },
-  "last_modified": {
-    "type": "/type/datetime",
-    "value": "2023-09-26T21:29:38.878296"
-  }
+  "created": "2009-10-15T11:34:21.437031",
+  "last_modified": "2023-09-26T21:29:38.878296",
+  "price": 0
 }

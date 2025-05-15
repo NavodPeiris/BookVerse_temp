@@ -6,7 +6,7 @@ from minio import Minio
 import json
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
 from sqlalchemy.orm import declarative_base
-from sqlalchemy import Column, Integer, String, select, func
+from sqlalchemy import Column, Integer, String, select, func, desc
 from utils import get_db, get_current_user_id, User, Likes, Reviews, Purchases, SECRET_KEY, ALGORITHM
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
@@ -40,54 +40,13 @@ class SearchRequest(BaseModel):
     paid: Optional[bool] = None
     free: Optional[bool] = None
 
-def normalize_document(doc):
-    if isinstance(doc.get("description"), dict):
-        doc["description"] = doc["description"].get("value", "")
-    if isinstance(doc.get("created"), dict):
-        doc["created"] = doc["created"].get("value", "")
-    if isinstance(doc.get("last_modified"), dict):
-        doc["last_modified"] = doc["last_modified"].get("value", "")
-    return doc
 
 @app.get("/health")
 def health_check():
     return {"status": "ok"}
 
-@app.get("/search={text}")
-def search(text: str):
-    
-    index_name = "bookverse_books"
 
-    print("searching for:", text)
-
-    query = {
-        "query": {
-            "match": {
-                "title": text
-            }
-        }
-    }
-
-    res = []
-
-    results = es.search(index=index_name, body=query)
-    for hit in results["hits"]["hits"]:
-        doc = hit["_source"]
-        norm_doc = normalize_document(doc)
-        formatted_doc = {
-            "key": norm_doc.get("key"),
-            "author_name": norm_doc.get("authors"),
-            "cover_i": norm_doc.get("covers")[0],
-            "edition_count": norm_doc.get("edition_count"),
-            "first_publish_year": norm_doc.get("first_publish_year"),
-            "title": norm_doc.get("title"),
-        }
-        res.append(formatted_doc)
-
-    return JSONResponse(content=res)
-
-
-@app.post("/searchNew")
+@app.post("/search")
 def searchAll(request: SearchRequest):
 
     if all(value is None for value in request.model_dump().values()):
@@ -175,14 +134,13 @@ def searchAll(request: SearchRequest):
     results = es.search(index=index_name, body=query)
     for hit in results["hits"]["hits"]:
         doc = hit["_source"]
-        norm_doc = normalize_document(doc)
         formatted_doc = {
-            "key": norm_doc.get("key"),
-            "author_name": norm_doc.get("authors"),
-            "cover_i": norm_doc.get("covers")[0],
-            "edition_count": norm_doc.get("edition_count"),
-            "first_publish_year": norm_doc.get("first_publish_year"),
-            "title": norm_doc.get("title"),
+            "key": doc.get("key"),
+            "author_name": doc.get("authors"),
+            "cover_i": doc.get("covers")[0],
+            "edition_count": doc.get("edition_count"),
+            "first_publish_year": doc.get("first_publish_year"),
+            "title": doc.get("title"),
         }
         res.append(formatted_doc)
 
@@ -200,7 +158,6 @@ async def get_work(work_id: str, user_id: int = Depends(get_current_user_id), db
 
     # Parse the JSON content
     doc = json.load(response)
-    norm_doc = normalize_document(doc)
 
     # Close the stream
     response.close()
@@ -237,16 +194,16 @@ async def get_work(work_id: str, user_id: int = Depends(get_current_user_id), db
     purchase = resultP.scalar()
     
     if purchase != None:
-        norm_doc["paid"] = False
+        doc["paid"] = False
     
     res = {
-        "description": norm_doc.get("description"),
-        "title": norm_doc.get("title"),
-        "covers": norm_doc.get("covers"),
-        "subject_places": norm_doc.get("subject_places"),
-        "subject_times": norm_doc.get("subject_times"),
-        "subjects": norm_doc.get("subjects"),
-        "paid": norm_doc.get("paid"),
+        "description": doc.get("description"),
+        "title": doc.get("title"),
+        "covers": doc.get("covers"),
+        "subject_places": doc.get("subject_places"),
+        "subject_times": doc.get("subject_times"),
+        "subjects": doc.get("subjects"),
+        "paid": doc.get("paid"),
         "like_count": like_count,
         "user_liked": user_liked,
         "rate": rate,
@@ -273,6 +230,48 @@ async def like_work(work_id: str, user_id: int = Depends(get_current_user_id), d
     await db.commit()
 
     return JSONResponse(content={"message": "Work liked successfully"})
+
+
+@app.get("/most_liked")
+async def most_liked_works(user_id: int = Depends(get_current_user_id), db: AsyncSession = Depends(get_db)):
+    # Check if the user has already liked the work
+    result = await db.execute(
+        select(Likes.book_id, func.count().label("like_count"))
+        .group_by(Likes.book_id)
+        .order_by(desc("like_count"))
+        .limit(10)
+    )
+
+    top_10_books = result.all()
+    result_docs = []
+
+    for book in top_10_books:
+        bucket_name = "book-metadata"
+        object_name = f"{book.book_id}.json"
+
+        # Download the file to memory
+        response = client.get_object(bucket_name, object_name)
+
+        # Parse the JSON content
+        doc = json.load(response)
+        
+        formatted_doc = {
+            "key": doc.get("key"),
+            "author_name": doc.get("authors"),
+            "cover_i": doc.get("covers")[0],
+            "edition_count": doc.get("edition_count"),
+            "first_publish_year": doc.get("first_publish_year"),
+            "title": doc.get("title"),
+        }
+
+        result_docs.append(formatted_doc)
+    
+    # Close the stream
+    response.close()
+    response.release_conn()
+
+    return JSONResponse(content=result_docs)
+
 
 
 @app.get("/download_book/{work_id}")
