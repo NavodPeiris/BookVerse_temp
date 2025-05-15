@@ -29,11 +29,11 @@ const BookDetails = () => {
       console.log(data);
 
       if(data){
-        const {description, title, covers, subject_places, subject_times, subjects, paid, like_count, user_liked, rate} = data;
+        const {description, title, cover_image_available, subject_places, subject_times, subjects, paid, like_count, user_liked, rate} = data;
         const newBook = {
           description: description ? description : "No description found",
           title: title,
-          cover_img: covers ? `http://localhost:9000/book-cover-images/${id}.jpg` : coverImg,
+          cover_img: cover_image_available ? `http://localhost:9000/book-cover-images/${id}.jpg` : coverImg,
           subject_places: subject_places ? subject_places.join(", ") : "No subject places found",
           subject_times : subject_times ? subject_times.join(", ") : "No subject times found",
           subjects: subjects ? subjects.join(", ") : "No subjects found",

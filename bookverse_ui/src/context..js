@@ -45,12 +45,12 @@ const AppProvider = ({children}) => {
 
             if(docs){
                 const newBooks = docs.slice(0, 20).map((bookSingle) => {
-                    const {key, author_name, cover_i, edition_count, first_publish_year, title} = bookSingle;
+                    const {key, author_name, cover_image_available, edition_count, first_publish_year, title} = bookSingle;
                     console.log(key)
                     return {
                         id: key,
                         author: author_name,
-                        cover_id: cover_i,
+                        cover_image_available: cover_image_available,
                         edition_count: edition_count,
                         first_publish_year: first_publish_year,
                         title: title

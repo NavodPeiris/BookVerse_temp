@@ -96,7 +96,7 @@ async def recommend(user_id: int = Depends(get_current_user_id), db: AsyncSessio
         formatted_doc = {
             "key": doc.get("key"),
             "author_name": doc.get("authors"),
-            "cover_i": doc.get("covers")[0],
+            "cover_image_available": doc.get("cover_image_available"),
             "edition_count": doc.get("edition_count"),
             "first_publish_year": doc.get("first_publish_year"),
             "title": doc.get("title"),

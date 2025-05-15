@@ -137,7 +137,7 @@ def searchAll(request: SearchRequest):
         formatted_doc = {
             "key": doc.get("key"),
             "author_name": doc.get("authors"),
-            "cover_i": doc.get("covers")[0],
+            "cover_image_available": doc.get("cover_image_available"),
             "edition_count": doc.get("edition_count"),
             "first_publish_year": doc.get("first_publish_year"),
             "title": doc.get("title"),
@@ -199,7 +199,7 @@ async def get_work(work_id: str, user_id: int = Depends(get_current_user_id), db
     res = {
         "description": doc.get("description"),
         "title": doc.get("title"),
-        "covers": doc.get("covers"),
+        "cover_image_available": doc.get("cover_image_available"),
         "subject_places": doc.get("subject_places"),
         "subject_times": doc.get("subject_times"),
         "subjects": doc.get("subjects"),
@@ -258,7 +258,7 @@ async def most_liked_works(user_id: int = Depends(get_current_user_id), db: Asyn
         formatted_doc = {
             "key": doc.get("key"),
             "author_name": doc.get("authors"),
-            "cover_i": doc.get("covers")[0],
+            "cover_image_available": doc.get("cover_image_available"),
             "edition_count": doc.get("edition_count"),
             "first_publish_year": doc.get("first_publish_year"),
             "title": doc.get("title"),

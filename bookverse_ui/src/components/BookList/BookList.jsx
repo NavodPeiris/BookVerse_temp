@@ -5,16 +5,14 @@ import Loading from "../Loader/Loader";
 import coverImg from "../../images/cover_not_found.jpg";
 import "./BookList.css";
 
-//https://covers.openlibrary.org/b/id/240727-S.jpg
-
 const BookList = () => {
   const {books, loading, resultTitle} = useGlobalContext();
   const booksWithCovers = books.map((singleBook) => {
     return {
       ...singleBook,
       // removing /works/ to get only id
-      id: (singleBook.id).replace("/works/", ""),
-      cover_img: singleBook.cover_id ? `http://localhost:9000/book-cover-images/${(singleBook.id).replace("/works/", "")}.jpg` : coverImg
+      id: (singleBook.id),
+      cover_img: singleBook.cover_image_available ? `http://localhost:9000/book-cover-images/${(singleBook.id)}.jpg` : coverImg
     }
   });
 
