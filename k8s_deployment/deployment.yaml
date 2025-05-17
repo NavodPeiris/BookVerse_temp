@@ -15,48 +15,6 @@ spec:
     args: ["sleep", "3600"]
   restartPolicy: Never
 ---
-# book-catalog-service
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: book-catalog-service
-  namespace: bookverse
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: book-catalog-service
-  template:
-    metadata:
-      labels:
-        app: book-catalog-service
-    spec:
-      containers:
-      - name: book-catalog
-        image: navodevil/bookverse-book-review-recommend:latest
-        ports:
-        - containerPort: 8001
-        resources:
-          requests:
-            cpu: "200m"
-            memory: "256Mi"
-          limits:
-            cpu: "500m"
-            memory: "512Mi"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: book-catalog-service
-  namespace: bookverse
-spec:
-  type: ClusterIP
-  selector:
-    app: book-catalog-service
-  ports:
-    - port: 8001
-      targetPort: 8001
----
 # auth-service
 apiVersion: apps/v1
 kind: Deployment
@@ -77,7 +35,7 @@ spec:
       - name: auth
         image: navodevil/bookverse-auth:latest
         ports:
-        - containerPort: 8002
+        - containerPort: 8001
         resources:
           requests:
             cpu: "200m"
@@ -95,6 +53,48 @@ spec:
   type: ClusterIP
   selector:
     app: auth-service
+  ports:
+    - port: 8001
+      targetPort: 8001
+---
+# book-catalog-service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: book-catalog-service
+  namespace: bookverse
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: book-catalog-service
+  template:
+    metadata:
+      labels:
+        app: book-catalog-service
+    spec:
+      containers:
+      - name: book-catalog
+        image: navodevil/bookverse-book-catalog:latest
+        ports:
+        - containerPort: 8002
+        resources:
+          requests:
+            cpu: "200m"
+            memory: "256Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: book-catalog-service
+  namespace: bookverse
+spec:
+  type: ClusterIP
+  selector:
+    app: book-catalog-service
   ports:
     - port: 8002
       targetPort: 8002
@@ -191,7 +191,7 @@ metadata:
   namespace: bookverse
   annotations:
     nginx.ingress.kubernetes.io/enable-cors: "true"
-    nginx.ingress.kubernetes.io/cors-allow-origin: "http://localhost:3000"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "*"
     nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, OPTIONS, DELETE"
     nginx.ingress.kubernetes.io/cors-allow-headers: "Origin, X-Requested-With, Content-Type, Accept, Authorization"
     nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
@@ -206,22 +206,22 @@ spec:
           service:
             name: auth-service
             port:
-              number: 8002
-      - path: /catalog
+              number: 8001
+      - path: /book-catalog
         pathType: Prefix
         backend:
           service:
             name: book-catalog-service
             port:
-              number: 8001
-      - path: /buy
+              number: 8002
+      - path: /book-pub-buy
         pathType: Prefix
         backend:
           service:
             name: book-pub-buy-service
             port:
               number: 8003
-      - path: /review
+      - path: /book-review-recommend
         pathType: Prefix
         backend:
           service:
