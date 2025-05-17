@@ -7,20 +7,12 @@ import json
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
 from sqlalchemy.orm import declarative_base, aliased
 from sqlalchemy import Column, Integer, String, select, func, distinct
-from utils import get_db, get_current_user_id, User, Likes, Reviews, Purchases, SECRET_KEY, ALGORITHM
+from utils import get_db, get_current_user_id, User, Likes, Reviews, Purchases, SECRET_KEY, ALGORITHM, es, client
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 from typing import Optional
 
 app = FastAPI()
-
-# Initialize the MinIO client
-client = Minio(
-    "localhost:9000",  # or your MinIO server address
-    access_key="minioadmin",
-    secret_key="minioadmin",
-    secure=False  # Set to True if using HTTPS
-)
 
 app.add_middleware(
     CORSMiddleware,
@@ -36,12 +28,12 @@ class RateRequest(BaseModel):
     review: str
 
 
-@app.get("/health")
+@app.get("/book-review-recommend/health")
 def health_check():
     return {"status": "ok"}
 
 
-@app.post("/rate")
+@app.post("/book-review-recommend/rate")
 async def rate(request: RateRequest, user_id: int = Depends(get_current_user_id), db: AsyncSession = Depends(get_db)):
     result = await db.execute(select(Reviews).where(Reviews.user_id == user_id, Reviews.book_id == request.book_id))
     existing_rate = result.scalar()
@@ -59,7 +51,7 @@ async def rate(request: RateRequest, user_id: int = Depends(get_current_user_id)
     return JSONResponse(content={"message": "work reviewed successfully"})
 
 
-@app.get("/recommend")
+@app.get("/book-review-recommend/recommend")
 async def recommend(user_id: int = Depends(get_current_user_id), db: AsyncSession = Depends(get_db)):
     L1 = aliased(Likes)
     L2 = aliased(Likes)

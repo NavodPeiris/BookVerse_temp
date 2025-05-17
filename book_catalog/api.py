@@ -1,26 +1,14 @@
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from elasticsearch import Elasticsearch
-from minio import Minio
 import json
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
 from sqlalchemy.orm import declarative_base
 from sqlalchemy import Column, Integer, String, select, func, desc
-from utils import get_db, get_current_user_id, User, Likes, Reviews, Purchases, SECRET_KEY, ALGORITHM
+from utils import get_db, get_current_user_id, User, Likes, Reviews, Purchases, SECRET_KEY, ALGORITHM, es, client
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 from typing import Optional
-
-es = Elasticsearch("http://localhost:9200")
-
-# Initialize the MinIO client
-client = Minio(
-    "localhost:9000",  # or your MinIO server address
-    access_key="minioadmin",
-    secret_key="minioadmin",
-    secure=False  # Set to True if using HTTPS
-)
 
 app = FastAPI()
 
@@ -41,12 +29,12 @@ class SearchRequest(BaseModel):
     free: Optional[bool] = None
 
 
-@app.get("/health")
+@app.get("/book-catalog/health")
 def health_check():
     return {"status": "ok"}
 
 
-@app.post("/search")
+@app.post("/book-catalog/search")
 def searchAll(request: SearchRequest):
 
     if all(value is None for value in request.model_dump().values()):
@@ -147,7 +135,7 @@ def searchAll(request: SearchRequest):
     return JSONResponse(content=res)
 
 
-@app.get("/works/{work_id}")
+@app.get("/book-catalog/works/{work_id}")
 async def get_work(work_id: str, user_id: int = Depends(get_current_user_id), db: AsyncSession = Depends(get_db)):
     
     bucket_name = "book-metadata"
@@ -212,7 +200,7 @@ async def get_work(work_id: str, user_id: int = Depends(get_current_user_id), db
     return JSONResponse(content=res)
 
 
-@app.post("/like/{work_id}")
+@app.post("/book-catalog/like/{work_id}")
 async def like_work(work_id: str, user_id: int = Depends(get_current_user_id), db: AsyncSession = Depends(get_db)):
     # Check if the user has already liked the work
     result = await db.execute(select(Likes).where(Likes.user_id == user_id, Likes.book_id == work_id))
@@ -232,7 +220,7 @@ async def like_work(work_id: str, user_id: int = Depends(get_current_user_id), d
     return JSONResponse(content={"message": "Work liked successfully"})
 
 
-@app.get("/most_liked")
+@app.get("/book-catalog/most_liked")
 async def most_liked_works(user_id: int = Depends(get_current_user_id), db: AsyncSession = Depends(get_db)):
     # Check if the user has already liked the work
     result = await db.execute(
@@ -274,7 +262,7 @@ async def most_liked_works(user_id: int = Depends(get_current_user_id), db: Asyn
 
 
 
-@app.get("/download_book/{work_id}")
+@app.get("/book-catalog/download_book/{work_id}")
 def download_file(work_id: str):
     try:
         # Get the object from MinIO

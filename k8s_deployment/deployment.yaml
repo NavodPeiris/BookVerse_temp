@@ -1,0 +1,363 @@
+# Namespace Setup
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: bookverse
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox
+spec:
+  containers:
+  - name: busybox
+    image: busybox
+    args: ["sleep", "3600"]
+  restartPolicy: Never
+---
+# book-catalog-service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: book-catalog-service
+  namespace: bookverse
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: book-catalog-service
+  template:
+    metadata:
+      labels:
+        app: book-catalog-service
+    spec:
+      containers:
+      - name: book-catalog
+        image: navodevil/bookverse-book-review-recommend:latest
+        ports:
+        - containerPort: 8001
+        resources:
+          requests:
+            cpu: "200m"
+            memory: "256Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: book-catalog-service
+  namespace: bookverse
+spec:
+  type: ClusterIP
+  selector:
+    app: book-catalog-service
+  ports:
+    - port: 8001
+      targetPort: 8001
+---
+# auth-service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-service
+  namespace: bookverse
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: auth-service
+  template:
+    metadata:
+      labels:
+        app: auth-service
+    spec:
+      containers:
+      - name: auth
+        image: navodevil/bookverse-auth:latest
+        ports:
+        - containerPort: 8002
+        resources:
+          requests:
+            cpu: "200m"
+            memory: "256Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-service
+  namespace: bookverse
+spec:
+  type: ClusterIP
+  selector:
+    app: auth-service
+  ports:
+    - port: 8002
+      targetPort: 8002
+---
+# book-pub-buy-service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: book-pub-buy-service
+  namespace: bookverse
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: book-pub-buy-service
+  template:
+    metadata:
+      labels:
+        app: book-pub-buy-service
+    spec:
+      containers:
+      - name: book-pub-buy
+        image: navodevil/bookverse-book-pub-buy:latest
+        ports:
+        - containerPort: 8003
+        resources:
+          requests:
+            cpu: "200m"
+            memory: "256Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: book-pub-buy-service
+  namespace: bookverse
+spec:
+  type: ClusterIP
+  selector:
+    app: book-pub-buy-service
+  ports:
+    - port: 8003
+      targetPort: 8003
+---
+# book-review-recommend-service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: book-review-recommend-service
+  namespace: bookverse
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: book-review-recommend-service
+  template:
+    metadata:
+      labels:
+        app: book-review-recommend-service
+    spec:
+      containers:
+      - name: book-review-recommend
+        image: navodevil/bookverse-book-review-recommend:latest
+        ports:
+        - containerPort: 8004
+        resources:
+          requests:
+            cpu: "200m"
+            memory: "256Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: book-review-recommend-service
+  namespace: bookverse
+spec:
+  type: ClusterIP
+  selector:
+    app: book-review-recommend-service
+  ports:
+    - port: 8004
+      targetPort: 8004
+---
+# Ingress Configuration
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bookverse-ingress
+  namespace: bookverse
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - path: /auth
+        pathType: Prefix
+        backend:
+          service:
+            name: auth-service
+            port:
+              number: 8002
+      - path: /catalog
+        pathType: Prefix
+        backend:
+          service:
+            name: book-catalog-service
+            port:
+              number: 8001
+      - path: /buy
+        pathType: Prefix
+        backend:
+          service:
+            name: book-pub-buy-service
+            port:
+              number: 8003
+      - path: /review
+        pathType: Prefix
+        backend:
+          service:
+            name: book-review-recommend-service
+            port:
+              number: 8004
+---
+# MinIO Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minio
+  namespace: bookverse
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: minio
+  template:
+    metadata:
+      labels:
+        app: minio
+    spec:
+      containers:
+      - name: minio
+        image: minio/minio
+        args: ["server", "/data", "--console-address", ":9001"]
+        ports:
+        - containerPort: 9000
+        - containerPort: 9001
+        env:
+        - name: MINIO_ROOT_USER
+          value: minioadmin
+        - name: MINIO_ROOT_PASSWORD
+          value: minioadmin
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: minio
+  namespace: bookverse
+spec:
+  type: LoadBalancer
+  selector:
+    app: minio
+  ports:
+  - name: api
+    port: 9000
+    targetPort: 9000
+  - name: console
+    port: 9001
+    targetPort: 9001
+---
+# Elasticsearch Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: elasticsearch
+  namespace: bookverse
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: elasticsearch
+  template:
+    metadata:
+      labels:
+        app: elasticsearch
+    spec:
+      containers:
+      - name: elasticsearch
+        image: docker.elastic.co/elasticsearch/elasticsearch:8.12.2
+        env:
+        - name: discovery.type
+          value: single-node
+        - name: xpack.security.enabled
+          value: "false"
+        - name: xpack.security.transport.ssl.enabled
+          value: "false"
+        - name: xpack.security.http.ssl.enabled
+          value: "false"
+        - name: ES_JAVA_OPTS
+          value: "-Xms1g -Xmx1g"
+        ports:
+        - containerPort: 9200
+        - containerPort: 9300
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: elasticsearch
+  namespace: bookverse
+spec:
+  type: LoadBalancer
+  selector:
+    app: elasticsearch
+  ports:
+  - name: http
+    port: 9200
+    targetPort: 9200
+  - name: transport
+    port: 9300
+    targetPort: 9300
+---
+# PostgreSQL Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+  namespace: bookverse
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:15
+        env:
+        - name: POSTGRES_USER
+          value: postgres
+        - name: POSTGRES_PASSWORD
+          value: postgres
+        - name: POSTGRES_DB
+          value: bookverse_db
+        ports:
+        - containerPort: 5432
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres
+  namespace: bookverse
+spec:
+  type: LoadBalancer
+  selector:
+    app: postgres
+  ports:
+  - port: 5432
+    targetPort: 5432

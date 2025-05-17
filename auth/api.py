@@ -7,7 +7,6 @@ from passlib.context import CryptContext
 from jose import jwt, JWTError
 from pydantic import BaseModel
 from datetime import datetime, timedelta
-from utils import get_db, get_current_user_id, User, Likes, Reviews, Purchases, SECRET_KEY, ALGORITHM
 
 ACCESS_TOKEN_EXPIRE_DAYS = 7
 
@@ -52,7 +51,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.post("/register", response_model=Token)
+
+@app.get("/auth/health")
+def health_check():
+    return {"status": "ok"}
+
+
+@app.post("/auth/register", response_model=Token)
 async def register(user: UserCreate, db: AsyncSession = Depends(get_db)):
     result = await db.execute(select(User).where(User.email == user.email))
     if result.scalar():
@@ -70,7 +75,7 @@ async def register(user: UserCreate, db: AsyncSession = Depends(get_db)):
     return {"access_token": access_token, "expire": expire}
 
 
-@app.post("/login", response_model=Token)
+@app.post("/auth/login", response_model=Token)
 async def login(user: UserLogin, db: AsyncSession = Depends(get_db)):
     result = await db.execute(select(User).where(User.email == user.email))
     db_user = result.scalar()
@@ -82,7 +87,7 @@ async def login(user: UserLogin, db: AsyncSession = Depends(get_db)):
     return {"access_token": access_token, "expire": expire}
 
 
-@app.get("/verify-token")
+@app.get("/auth/verify-token")
 async def login(user_id: int = Depends(get_current_user_id)):
     if user_id:
         return {"user_id": user_id}

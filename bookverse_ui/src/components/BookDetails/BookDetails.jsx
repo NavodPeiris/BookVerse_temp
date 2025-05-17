@@ -6,9 +6,7 @@ import "./BookDetails.css";
 import { FaArrowLeft, FaShoppingCart, FaDownload, FaHeart, FaStar, FaBookOpen } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
-import { book_catalog_link } from '../../backend_links';
-
-const URL = "http://localhost:8001/works/";
+import { book_catalog_link, minio_link } from '../../backend_links';
 
 const BookDetails = () => {
   const {id} = useParams();
@@ -20,7 +18,7 @@ const BookDetails = () => {
 
   const setBookDetails = async() => {
     try{
-      const response = await axios.get(`${URL}${id}`, {
+      const response = await axios.get(`${book_catalog_link}/works/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -33,7 +31,7 @@ const BookDetails = () => {
         const newBook = {
           description: description ? description : "No description found",
           title: title,
-          cover_img: cover_image_available ? `http://localhost:9000/book-cover-images/${id}.jpg` : coverImg,
+          cover_img: cover_image_available ? `${minio_link}/book-cover-images/${id}.jpg` : coverImg,
           subject_places: subject_places ? subject_places.join(", ") : "No subject places found",
           subject_times : subject_times ? subject_times.join(", ") : "No subject times found",
           subjects: subjects ? subjects.join(", ") : "No subjects found",

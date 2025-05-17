@@ -3,6 +3,7 @@ import * as pdfjsLib from "pdfjs-dist";
 import HTMLFlipBook from "react-pageflip";
 import { Loader2 } from "lucide-react";
 import { useParams } from 'react-router-dom';
+import { minio_link } from "../../backend_links";
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
 
@@ -17,7 +18,7 @@ export default function BookFlip() {
 
   useEffect(() => {
     const loadPdf = async () => {
-      const loadingTask = pdfjsLib.getDocument(`http://localhost:9000/book-pdfs/${id}.pdf`);
+      const loadingTask = pdfjsLib.getDocument(`${minio_link}/book-pdfs/${id}.pdf`);
       const loadedPdf = await loadingTask.promise;
       setPdf(loadedPdf);
       setNumPages(loadedPdf.numPages);

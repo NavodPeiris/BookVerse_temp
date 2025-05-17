@@ -4,6 +4,7 @@ import Book from "../BookList/Book";
 import Loading from "../Loader/Loader";
 import coverImg from "../../images/cover_not_found.jpg";
 import "./BookList.css";
+import { minio_link } from '../../backend_links';
 
 const BookList = () => {
   const {books, loading, resultTitle} = useGlobalContext();
@@ -12,7 +13,7 @@ const BookList = () => {
       ...singleBook,
       // removing /works/ to get only id
       id: (singleBook.id),
-      cover_img: singleBook.cover_image_available ? `http://localhost:9000/book-cover-images/${(singleBook.id)}.jpg` : coverImg
+      cover_img: singleBook.cover_image_available ? `${minio_link}/book-cover-images/${(singleBook.id)}.jpg` : coverImg
     }
   });
 
