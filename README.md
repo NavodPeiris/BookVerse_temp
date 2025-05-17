@@ -34,6 +34,7 @@ use k8s_deployment for production deployment
 - check pod status: `kubectl get pods --all-namespaces`
 - check services: `kubectl get svc --all-namespaces`
 - run `python data_setup.py` inside init_data with IS_PROD=True
+- in bookverse_ui/backend_links.js set prod = true
 - run `npm install` in bookverse_ui
 - run `npm start` in bookverse_ui
 
