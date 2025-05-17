@@ -7,6 +7,7 @@ from passlib.context import CryptContext
 from jose import jwt, JWTError
 from pydantic import BaseModel
 from datetime import datetime, timedelta
+from utils import get_db, get_current_user_id, User, Likes, Reviews, Purchases, SECRET_KEY, ALGORITHM, es, client
 
 ACCESS_TOKEN_EXPIRE_DAYS = 7
 
