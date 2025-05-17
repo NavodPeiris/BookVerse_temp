@@ -5,7 +5,7 @@ const auth_link = prod ? `http://${ingress_ip}/auth`: "http://localhost:8001/aut
 const book_catalog_link = prod ? `http://${ingress_ip}/book-catalog`: "http://localhost:8002/book-catalog"
 const book_pub_buy_link = prod ? `http://${ingress_ip}/book-pub-buy`: "http://localhost:8003/book-pub-buy"
 const book_review_recommend_link = prod ? `http://${ingress_ip}/book-review-recommend`: "http://localhost:8004/book-review-recommend"
-const minio_link = prod ? `http://minio.bookverse.svc.cluster.local:9000`: "http://localhost:9000"
+const minio_link = "http://localhost:9000"
 
 export {
     auth_link,
