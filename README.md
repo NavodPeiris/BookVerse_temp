@@ -1,4 +1,8 @@
-## This is Distributed Systems Project: BookVerse
+## Distributed Systems Project: BookVerse
+
+<p align="center">
+  <img src="ds_architecture.png" />
+</p>
 
 ### Dev Setup
 
