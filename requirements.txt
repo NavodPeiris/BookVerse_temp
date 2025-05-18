@@ -6,4 +6,5 @@ passlib[bcrypt]
 python-jose[cryptography]
 pydantic
 minio
-elasticsearch
+elasticsearch<9.0.0
+python-multipart
