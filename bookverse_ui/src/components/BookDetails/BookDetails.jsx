@@ -89,7 +89,7 @@ const BookDetails = () => {
         `${book_review_recommend_link}/rate`,
         {
           book_id: id,
-          rate: rate,
+          title: title,
           review: review
         },
         {
