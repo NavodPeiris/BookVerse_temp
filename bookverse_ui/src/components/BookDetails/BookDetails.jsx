@@ -6,7 +6,7 @@ import "./BookDetails.css";
 import { FaArrowLeft, FaShoppingCart, FaDownload, FaHeart, FaStar, FaBookOpen } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
-import { book_catalog_link, minio_link } from '../../backend_links';
+import { book_catalog_link, book_review_recommend_link, book_pub_buy_link, minio_link } from '../../backend_links';
 
 const BookDetails = () => {
   const {id} = useParams();
@@ -15,6 +15,9 @@ const BookDetails = () => {
   const navigate = useNavigate();
   const downloadUrl = `${book_catalog_link}/download_book/${id}.pdf`
   const token = localStorage.getItem('access_token');
+
+  const [rate, setRate] = useState(0);
+  const [review, setReview] = useState("");
 
   const setBookDetails = async() => {
     try{
@@ -63,6 +66,56 @@ const BookDetails = () => {
       const response = await axios.post(
         `${book_catalog_link}/like/${id}`,
         {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+
+      if (response.status === 200 && book) {
+        setLoading(true);
+        setBookDetails();
+      }
+    } catch (error) {
+      console.error("Error liking the book:", error);
+    }
+  }
+
+  // TODO: handle rating (abiman)
+  const handleRate = async() => {
+    try {
+      const response = await axios.post(
+        `${book_review_recommend_link}/rate`,
+        {
+          book_id: id,
+          rate: rate,
+          review: review
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+
+      if (response.status === 200 && book) {
+        setLoading(true);
+        setBookDetails();
+      }
+    } catch (error) {
+      console.error("Error liking the book:", error);
+    }
+  }
+
+  // TODO: handle buying (gethwan)
+  const handleBuy = async() => {
+    try {
+      const response = await axios.post(
+        `${book_pub_buy_link}/buy`,
+        {
+          book_id: id,
+        },
         {
           headers: {
             Authorization: `Bearer ${token}`

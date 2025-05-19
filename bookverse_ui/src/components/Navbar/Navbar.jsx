@@ -39,6 +39,9 @@ const Navbar = () => {
             <li className='nav-item'>
               <Link to = "about" className='nav-link text-uppercase text-black fs-22 fw-6 ls-1'>about</Link>
             </li>
+            <li className='nav-item'>
+              <Link to = "publish" className='nav-link text-uppercase text-black fs-22 fw-6 ls-1'>publish</Link>
+            </li>
             <button
               type="submit"
               className="nav-link text-uppercase text-black fs-18 fw-6 ls-1 ms-3 mt-1"

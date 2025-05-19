@@ -13,6 +13,7 @@ import BookDetails from "./components/BookDetails/BookDetails";
 import Login from './pages/User/Login';
 import Register from './pages/User/Register';
 import BookFlip from './components/BookDetails/BookFlip';
+import Publish from './pages/Publish/Publish';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -21,6 +22,7 @@ root.render(
       <Routes>
         <Route path = "/" element = {<Home />}>
           <Route path = "about" element = {<About />} />
+          <Route path = "publish" element = {<Publish />} />
           <Route path = "book" element = {<BookList />} />
           <Route path = "/book/:id" element = {<BookDetails />} />
         </Route>
