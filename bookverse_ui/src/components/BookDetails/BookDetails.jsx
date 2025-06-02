@@ -30,7 +30,7 @@ const BookDetails = () => {
       console.log(data);
 
       if(data){
-        const {description, title, cover_image_available, subject_places, subject_times, subjects, paid, like_count, user_liked, rate} = data;
+        const {description, title, cover_image_available, subject_places, subject_times, subjects, paid, like_count, user_liked, rate, price} = data;
         const newBook = {
           description: description ? description : "No description found",
           title: title,
@@ -41,7 +41,8 @@ const BookDetails = () => {
           paid: paid,
           like_count: like_count,
           user_liked: user_liked,
-          rate: rate
+          rate: rate,
+          price: price
         };
         setBook(newBook);
       } else {

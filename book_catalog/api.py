@@ -195,6 +195,7 @@ async def get_work(work_id: str, user_id: int = Depends(get_current_user_id), db
         "like_count": like_count,
         "user_liked": user_liked,
         "rate": rate,
+        "price": doc.get("price")
     }
        
     return JSONResponse(content=res)
