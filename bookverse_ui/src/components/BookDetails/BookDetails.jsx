@@ -112,8 +112,9 @@ const BookDetails = () => {
   // TODO: handle buying (gethwan)
   const handleBuy = async() => {
     try {
+      console.log("buying book with id: ", id);
       const response = await axios.post(
-        `${book_pub_buy_link}/buy`,
+        `${book_pub_buy_link}/create-checkout-session`,
         {
           book_id: id,
         },
@@ -123,13 +124,16 @@ const BookDetails = () => {
           }
         }
       );
-
-      if (response.status === 200 && book) {
+      console.log("response: ", response.status, response.data.url);
+      if (response.status === 200) {
+        
+        console.log("response data: ", response.data.url);
         setLoading(true);
+        window.location.href = response.data.url;
         setBookDetails();
       }
     } catch (error) {
-      console.error("Error liking the book:", error);
+      console.error("Error buying the book:", error);
     }
   }
 
@@ -146,7 +150,7 @@ const BookDetails = () => {
             <img src = {book?.cover_img} alt = "cover img" />
             <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center', margin: '5px'}}>
 
-              <button type='button' className='flex flex-c back-btn' disabled={!book?.paid}>
+              <button type='button' className='flex flex-c back-btn' disabled={book?.paid} onClick={handleBuy}>
                 <FaShoppingCart size={24}/>
               </button>
 

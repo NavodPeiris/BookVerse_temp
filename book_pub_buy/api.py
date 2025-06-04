@@ -1,7 +1,7 @@
 import io
-from fastapi import FastAPI, Depends, HTTPException, File, Form, UploadFile
+from fastapi import FastAPI, Depends, HTTPException, File, Form, UploadFile, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, RedirectResponse
 from elasticsearch import Elasticsearch
 from minio import Minio
 import json
@@ -15,8 +15,12 @@ from typing import Optional
 from datetime import datetime
 import uuid
 from io import BytesIO
+import stripe
 
 app = FastAPI()
+
+stripe.api_key = "sk_test_51RUAoa6CmabxqrilNKEFyDV0PIR9L20FJ0cmnHvCSDUdxiFiYG7jK46OOl6bX5tkeMvqMKGpkIh5BmvfjTqD4tOG00WMp2OfWG"
+
 
 app.add_middleware(
     CORSMiddleware,
@@ -34,6 +38,30 @@ class BookBuyRequest(BaseModel):
 def health_check():
     return {"status": "ok"}
 
+@app.post("/book-pub-buy/create-checkout-session")
+async def create_checkout_session(request: Request):
+    data = await request.json()
+    book_id = data["book_id"]
+
+    try:
+        session = stripe.checkout.Session.create(
+            payment_method_types=['card'],
+            line_items=[{
+                "price_data": {
+                    "currency": "usd",
+                    "product_data": {"name": f"Book {book_id}"},
+                    "unit_amount": 1000,
+                },
+                "quantity": 1,
+            }],
+            mode='payment',
+            success_url="http://localhost:3000/success?book_id={request.book_id}",
+            cancel_url="http://localhost:3000/cancel",
+        )
+        return {"url": session.url}
+        #return JSONResponse({"url": session.url})
+    except Exception as e:
+        return {"error": str(e)}
 
 @app.post("/book-pub-buy/buy")
 async def buy(request: BookBuyRequest, user_id: int = Depends(get_current_user_id), db: AsyncSession = Depends(get_db)):

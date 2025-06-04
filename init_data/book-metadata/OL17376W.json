@@ -1,5 +1,5 @@
 {
-  "paid": false,
+  "paid": true,
   "first_publish_year": "1972",
   "title": "The Lost Worlds of 2001",
   "cover_image_available": true,
@@ -21,5 +21,5 @@
   "edition_count": 14,
   "created": "2009-10-08T18:30:11.514899",
   "last_modified": "2024-08-17T04:19:13.896458",
-  "price": 0
+  "price": 100
 }
