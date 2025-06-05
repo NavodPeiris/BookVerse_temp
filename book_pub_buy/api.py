@@ -22,7 +22,7 @@ import os
 app = FastAPI()
 load_dotenv()
 
-stripe.api_key = os.getenv("STRIPE_SECRET_KEY")
+stripe.api_key = os.getenv("stripe_api_key")
 
 
 app.add_middleware(
