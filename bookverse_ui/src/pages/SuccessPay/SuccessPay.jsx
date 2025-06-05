@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { book_pub_buy_link } from '../../backend_links'; 
 
 const Success = () => {
   const location = useLocation();
@@ -14,7 +15,7 @@ const Success = () => {
     const completePurchase = async () => {
       try {
         const response = await axios.post(
-          'http://localhost:8003/book-pub-buy/buy',
+          `${book_pub_buy}/buy`,
           { book_id: bookId },
           {
             headers: {
