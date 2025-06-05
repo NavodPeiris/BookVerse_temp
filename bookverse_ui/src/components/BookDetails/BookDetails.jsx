@@ -84,13 +84,13 @@ const BookDetails = () => {
   }
 
   // TODO: handle rating (abiman)
-  const handleRate = async(title) => {
+  const handleRate = async() => {
     try {
       const response = await axios.post(
         `${book_review_recommend_link}/rate`,
         {
           book_id: id,
-          title: title,
+          title: book.title,
           review: review
         },
         {
@@ -113,10 +113,12 @@ const BookDetails = () => {
   const handleBuy = async() => {
     try {
       console.log("buying book with id: ", id);
+      console.log("price:", book.price);
       const response = await axios.post(
         `${book_pub_buy_link}/create-checkout-session`,
         {
           book_id: id,
+          price: parseFloat(`${book.price}`)
         },
         {
           headers: {

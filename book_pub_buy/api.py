@@ -36,15 +36,31 @@ app.add_middleware(
 
 class BookBuyRequest(BaseModel):
     book_id: str
+
+class CreateCheckoutSessionRequest(BaseModel):
+    book_id: str
+    price: float
     
 @app.get("/book-pub-buy/health")
 def health_check():
     return {"status": "ok"}
 
 @app.post("/book-pub-buy/create-checkout-session")
-async def create_checkout_session(request: Request):
-    data = await request.json()
-    book_id = data["book_id"]
+async def create_checkout_session(request: CreateCheckoutSessionRequest):
+
+    book_id = request.book_id
+    price = request.price
+
+    bucket_name = "book-metadata"
+    object_name = f"{book_id}.json"
+
+    # Download the file to memory
+    response = client.get_object(bucket_name, object_name)
+
+    # Parse the JSON content
+    doc = json.load(response)
+
+    title = doc.get("title", "Unknown Book")
 
     try:
         session = stripe.checkout.Session.create(
@@ -52,8 +68,8 @@ async def create_checkout_session(request: Request):
             line_items=[{
                 "price_data": {
                     "currency": "usd",
-                    "product_data": {"name": f"Book {book_id}"},
-                    "unit_amount": 1000,
+                    "product_data": {"name": f"Book : {title}"},
+                    "unit_amount": int(price * 100),
                 },
                 "quantity": 1,
             }],
@@ -62,6 +78,8 @@ async def create_checkout_session(request: Request):
             success_url=f"http://localhost:3000/success?book_id={book_id}",
             cancel_url="http://localhost:3000/cancel",
         )
+
+        print("returning url:", session.url)
         return {"url": session.url}
         #return JSONResponse({"url": session.url})
     except Exception as e:

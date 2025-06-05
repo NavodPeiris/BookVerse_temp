@@ -5,13 +5,14 @@ import { book_pub_buy_link } from '../../backend_links';
 
 const Success = () => {
   const location = useLocation();
+
   const navigate = useNavigate();
   const token = localStorage.getItem('access_token');
 
-  useEffect(() => {
-    const queryParams = new URLSearchParams(location.search);
-    const bookId = queryParams.get('book_id');
+  const queryParams = new URLSearchParams(location.search);
+  const bookId = queryParams.get('book_id');
 
+  useEffect(() => {
     const completePurchase = async () => {
       try {
         const response = await axios.post(
@@ -38,7 +39,7 @@ const Success = () => {
     <div className="success-page" style={{ textAlign: "center", marginTop: "100px" }}>
       <h1>✅ Payment Successful!</h1>
       <p>Your book has been unlocked.</p>
-      <button onClick={() => navigate('/')}>Go to Home</button>
+      <button onClick={() => navigate(`/book/${bookId}`)}>Go to Book</button>
     </div>
   );
 };
