@@ -34,7 +34,7 @@ const Success = () => {
   }, [location, token]);
 
   return (
-    <div className="success-page">
+    <div className="success-page" style={{ textAlign: "center", marginTop: "100px" }}>
       <h1>✅ Payment Successful!</h1>
       <p>Your book has been unlocked.</p>
       <button onClick={() => navigate('/')}>Go to Home</button>

@@ -16,10 +16,13 @@ from datetime import datetime
 import uuid
 from io import BytesIO
 import stripe
+from dotenv import load_dotenv
+import os
 
 app = FastAPI()
+load_dotenv()
 
-stripe.api_key = "sk_test_51RUAoa6CmabxqrilNKEFyDV0PIR9L20FJ0cmnHvCSDUdxiFiYG7jK46OOl6bX5tkeMvqMKGpkIh5BmvfjTqD4tOG00WMp2OfWG"
+stripe.api_key = os.getenv("STRIPE_SECRET_KEY")
 
 
 app.add_middleware(
