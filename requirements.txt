@@ -8,3 +8,4 @@ pydantic
 minio
 elasticsearch<9.0.0
 python-multipart
+stripe

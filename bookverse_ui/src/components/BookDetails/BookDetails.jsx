@@ -84,7 +84,7 @@ const BookDetails = () => {
   }
 
   // TODO: handle rating (abiman)
-  const handleRate = async() => {
+  const handleRate = async(title) => {
     try {
       const response = await axios.post(
         `${book_review_recommend_link}/rate`,
@@ -150,9 +150,12 @@ const BookDetails = () => {
             <img src = {book?.cover_img} alt = "cover img" />
             <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center', margin: '5px'}}>
 
-              <button type='button' className='flex flex-c back-btn' disabled={book?.paid} onClick={handleBuy}>
-                <FaShoppingCart size={24}/>
-              </button>
+              {book?.paid ? (
+                <button type='button' className='flex flex-c back-btn' onClick={handleBuy}>
+                  <FaShoppingCart size={24}/>
+                </button>
+                ):(<></>)
+              }
 
               <button type='button' className='flex flex-c back-btn' disabled={book?.paid} onClick={() => {if (!book?.paid) window.open(downloadUrl, "_blank");}}>
                 <FaDownload size={24} />

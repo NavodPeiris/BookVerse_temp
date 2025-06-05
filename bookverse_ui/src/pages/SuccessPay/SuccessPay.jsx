@@ -15,7 +15,7 @@ const Success = () => {
     const completePurchase = async () => {
       try {
         const response = await axios.post(
-          `${book_pub_buy}/buy`,
+          `${book_pub_buy_link}/buy`,
           { book_id: bookId },
           {
             headers: {
